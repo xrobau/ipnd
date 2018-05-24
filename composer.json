@@ -1,0 +1,9 @@
+{
+	"autoload": {
+		"classmap": [ "src/" ]
+	},
+	"require": {
+		"ramsey/uuid": "^3.7",
+		"xrobau/pest": "^1.0"
+	}
+}
