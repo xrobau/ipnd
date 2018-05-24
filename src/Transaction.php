@@ -9,6 +9,20 @@ class Transaction {
 		'ServiceStatusCode' => 2,
 		'PendingFlag' => 3,
 		'CancelPendingFlag' => 4,
+		'CustomerName' => 5,
+		'FindingName' => 6,
+		'ServiceAddress' => 7,
+		'DirectoryAddress' => 8,
+		'ListCode' => 9,
+		'UsageCode' => 10,
+		'TypeOfService' => 11,
+		'CustomerContact' => 12,
+		'CSPCode' => 13,
+		'DataProviderCode' => 14,
+		'TransactionDate' => 15,
+		'ServiceStatusDate' => 16,
+		'AlternateAddressFlag' => 17,
+		'PriorPublicNumber' => 18,
 	];
 
 	private $t = [];
@@ -24,7 +38,7 @@ class Transaction {
 	}
 
 	public function renderTransaction() {
-		var_tump($this->t);
+		var_dump($this->t);
 	}
 }
 
