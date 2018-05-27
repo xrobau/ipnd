@@ -1,0 +1,8 @@
+<?php
+
+// These are provided by the IPND Manager (Currently, Telstra)
+
+define("SOURCE", "XXXXX");  // File Source Code
+define("DPCODE", "YYYYYY"); // Data Provider Code
+define("CSPCODE", "999");   // CSP Code
+
