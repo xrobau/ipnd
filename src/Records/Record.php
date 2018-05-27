@@ -17,7 +17,7 @@ class Record {
 		if (!$this->type) {
 			throw new \Exception("No type in this record");
 		}
-		if (!$this->size) {
+		if ($this->type !== "MULTIPLE" && !$this->size) {
 			throw new \Exception("No length in this record");
 		}
 
@@ -34,7 +34,7 @@ class Record {
 		}
 	}
 
-	public function renderRecord() {
+	public function getRecord() {
 		return [ "type" => $this->type, "size" => $this->size, "value" => $this->val ];
 	}
 }

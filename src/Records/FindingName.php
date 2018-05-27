@@ -2,15 +2,10 @@
 
 namespace AussieVoIP\IPND\Records;
 
-class CustomerName extends Record {
+class FindingName {
 
 	public $d;
-
 	public $type = "MULTIPLE";
-
-	public function validate() {
-		return true;
-	}
 
 	public function setCustomerName($title, $fullname) {
 		// Split the name on spaces

@@ -2,11 +2,11 @@
 
 namespace AussieVoIP\IPND;
 
-class Header extends IPND_Base {
+class Header {
 
 	private $sequence;
 
-	public function setSequence($i) {
+	public function __construct($i) {
 		$seq = (int) $i;
 		if ($seq < 1) {
 			throw new \Exception("Invalid sequence number '$i'");
@@ -17,10 +17,16 @@ class Header extends IPND_Base {
 		$this->sequence = $seq;
 	}
 
-	public function getLine() {
-		if (!$this->sequence) {
-			throw new \Exception("No Sequence defined");
+	public function render() {
+		$values = $this->getLine();
+		$rendered = [];
+		foreach ($values as $i => $col) {
+			$rendered[$i] = IPND::formatCol($col);
 		}
+		return implode($rendered);
+	}
+
+	public function getLine() {
 		if (!defined("SOURCE")) {
 			throw new \Exception("Configuration error - SOURCE not defined");
 		}
@@ -33,9 +39,7 @@ class Header extends IPND_Base {
 			[ "type" => "N", "size" => 14, "value" => IPND::renderDate() ],
 			[ "type" => "X", "size" => 870, "value" => "" ],
 		];
-
 	}
-
 }
 
 

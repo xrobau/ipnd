@@ -2,12 +2,12 @@
 
 namespace AussieVoIP\IPND;
 
-class Footer extends IPND_Base {
+class Footer {
 
 	private $sequence;
 	private $count;
 
-	public function setSequence($i) {
+	public function __construct($i) {
 		$seq = (int) $i;
 		if ($seq < 1) {
 			throw new \Exception("Invalid sequence number '$i'");
@@ -16,6 +16,15 @@ class Footer extends IPND_Base {
 			throw new \Exception("Sequence number '$seq' too high");
 		}
 		$this->sequence = $seq;
+	}
+
+	public function render() {
+		$values = $this->getLine();
+		$rendered = [];
+		foreach ($values as $i => $col) {
+			$rendered[$i] = IPND::formatCol($col);
+		}
+		return implode($rendered);
 	}
 
 	public function setCount($c) {
@@ -30,9 +39,6 @@ class Footer extends IPND_Base {
 	}
 
 	public function getLine() {
-		if (!$this->sequence) {
-			throw new \Exception("No Sequence defined");
-		}
 		if (!defined("SOURCE")) {
 			throw new \Exception("Configuration error - SOURCE not defined");
 		}

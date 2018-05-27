@@ -10,9 +10,8 @@ class IPND {
 	private $transactions;
 
 	public function __construct($seq) {
-		$this->header = new Header;
-		$this->header->setSequence($seq);
-		$this->footer = new Footer;
+		$this->header = new Header($seq);
+		$this->footer = new Footer($seq);
 		$this->transactions = [];
 	}
 
@@ -24,7 +23,7 @@ class IPND {
 		print $this->header->render()."\n";
 		$this->footer->rows = count($this->transactions);
 		foreach ($this->transactions as $t) {
-			print $t->render()."\n";
+			print $t->renderTransaction()."\n";
 		}
 		print $this->footer->render()."\n";
 	}
@@ -38,6 +37,16 @@ class IPND {
 		$d = new \DateTime();
 		$d->setTimezone(new \DateTimeZone("Australia/Brisbane"));
 		return $d->format("YmdHis");
+	}
+
+	public static function formatCol($col) {
+		switch ($col['type']) {
+		case "X":
+			return self::formatColX($col['value'], $col['size']);
+		case "N":
+			return self::formatColN($col['value'], $col['size']);
+		}
+		throw new \Exception("Unknown col ".json_encode($col));
 	}
 
 	public static function formatColX($value, $size) {
@@ -61,6 +70,4 @@ class IPND {
 		return $str;
 	}
 }
-
-
 
