@@ -14,15 +14,15 @@ class Transaction {
 		'ServiceAddress' => 7,
 		'DirectoryAddress' => 8,
 		'ListCode' => 9,
-//		'UsageCode' => 10,
-//		'TypeOfService' => 11,
-//		'CustomerContact' => 12,
-//		'CSPCode' => 13,
-//		'DataProviderCode' => 14,
-//		'TransactionDate' => 15,
-//		'ServiceStatusDate' => 16,
-//		'AlternateAddressFlag' => 17,
-//		'PriorPublicNumber' => 18,
+		'UsageCode' => 10,
+		'TypeOfService' => 11,
+		'CustomerContact' => 12,
+		'CSPCode' => 13,
+		'DPCode' => 14,
+		'TransactionDate' => 15,
+		'ServiceStatusDate' => 16,
+		'AlternateAddressFlag' => 17,
+		'PriorPublicNumber' => 18,
 	];
 
 	private $t = [];
@@ -42,7 +42,6 @@ class Transaction {
 		$retarr = [];
 		$flipped = array_flip($this->r);
 		foreach ($flipped as $i => $v) {
-			print "I have $i and $v\n";
 			if (!isset($this->t[$i])) {
 				// This wasn't provided, so create it. If it doesn't have a default, it will error
 				$this->t[$i] = Record::getElement($v);

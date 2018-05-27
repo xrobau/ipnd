@@ -32,6 +32,7 @@ class Locality {
 			throw new \Exception("Unknown postcode $postcode");
 		}
 		$this->postcode_data = $postcode_to_suburb_hash[$postcode];
+		$this->Postcode = $postcode;
 		$this->State = $this->postcode_data[0]['STATE'];
 		return $postcode;
 	}

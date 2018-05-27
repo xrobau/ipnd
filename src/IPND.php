@@ -21,20 +21,21 @@ class IPND {
 
 	public function render() {
 		print $this->header->render()."\n";
-		$this->footer->rows = count($this->transactions);
+		$this->footer->setCount(count($this->transactions));
 		foreach ($this->transactions as $t) {
-			print $t->renderTransaction()."\n";
+			$t = $t->renderTransaction();
+			print "$t\n";
 		}
 		print $this->footer->render()."\n";
 	}
 
-	public static function renderDate() {
+	public static function renderDate($timestamp = "") {
 		// This field contains details of the date and time the
 		// creation of the data file commenced. The file header
 		// create start date field is 14 digits in length and follows
 		// the format YYYYMMDDHHMMSS
 		date_default_timezone_set("Australia/Brisbane");
-		$d = new \DateTime();
+		$d = new \DateTime($timestamp);
 		$d->setTimezone(new \DateTimeZone("Australia/Brisbane"));
 		return $d->format("YmdHis");
 	}

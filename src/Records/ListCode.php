@@ -4,7 +4,7 @@ namespace AussieVoIP\IPND\Records;
 
 class ListCode extends Record {
 
-	public $default = "UL";
+	public $defaultval = "UL";
 	public $type = "X";
 	public $size = 2;
 
