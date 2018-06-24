@@ -1,8 +1,20 @@
 {
+	"name": "aussievoip/ipnd",
+	"type": "library",
+	"description": "Open source implementation of the Australian IPND tool",
+	"keywords": ["ipnd", "australia", "e911"],
+	"homepage": "https://github.com/xrobau/ipnd",
+	"license": "AGPLv3",
+	"authors": [ {
+		"name": "Rob Thomas",
+		"email": "xrobau@linux.com",
+		"homepage": "https://xrobau.com"
+	} ],
 	"autoload": {
 		"classmap": [ "src/" ]
 	},
 	"require": {
+		"php": ">= 5.6",
 		"ramsey/uuid": "^3.7",
 		"xrobau/pest": "^1.0"
 	}
