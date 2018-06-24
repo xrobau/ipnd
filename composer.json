@@ -4,7 +4,7 @@
 	"description": "Open source implementation of the Australian IPND tool",
 	"keywords": ["ipnd", "australia", "e911"],
 	"homepage": "https://github.com/xrobau/ipnd",
-	"license": "AGPLv3",
+	"license": "AGPL-3.0-or-later",
 	"authors": [ {
 		"name": "Rob Thomas",
 		"email": "xrobau@linux.com",
