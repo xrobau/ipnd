@@ -60,7 +60,7 @@ class BuildingSubunit {
 		return [ $num, $suffix ];
 	}
 
-	public function getAllBuildingTypes($val) {
+	public function getAllBuildingTypes() {
 		return [
 			"" => "",
 			"ANT" => "Antenna",
