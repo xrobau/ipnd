@@ -26,6 +26,10 @@ class StreetAddress {
 	}
 
 	public function validateType($type) {
+		// The street type is optional.
+		if ($type === "" || $type === null) {
+			return "";
+		}
 		$alltypes = self::getRoadTypes();
 		// Do we know about this unflipped?
 		if (isset($alltypes[$type])) {
@@ -152,11 +156,13 @@ class StreetAddress {
 			"OTLK" => "Outlook",
 			"PDE" => "Parade",
 			"PWY" => "Parkway",
+			"PK" => "Park",
 			"PASS" => "Pass",
 			"PSGE" => "Passage",
 			"PATH" => "Path",
 			"PWAY" => "Pathway",
 			"PIAZ" => "Piazza",
+			"PL" => "Place",
 			"PLZA" => "Plaza",
 			"PKT" => "Pocket",
 			"PNT" => "Point",
@@ -195,6 +201,7 @@ class StreetAddress {
 			"VIEW" => "View",
 			"VSTA" => "Vista",
 			"WALK" => "Walk",
+			"WAY" => "Way",
 			"WKWY" => "Walkway",
 			"WHRF" => "Wharf",
 			"WYND" => "Wynd",

@@ -33,10 +33,10 @@ class Address {
 		}
 	}
 
-	public function setLocality($postcode, $suburb = false) {
+	public function setLocality($postcode, $suburb = false, $state = null) {
 		$this->elements->ServiceLocality->setPostcode($postcode);
 		if ($suburb) {
-			$this->elements->ServiceLocality->setLocality($suburb);
+			$this->elements->ServiceLocality->setLocality($suburb, $state);
 		}
 	}
 

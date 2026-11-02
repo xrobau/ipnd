@@ -37,14 +37,18 @@ class Locality {
 		return $postcode;
 	}
 
-	public function setLocality($sub) {
+	public function setLocality($sub, $state = null) {
+		// A postcode can cover more than one state (2620 is NSW and ACT), so if we were told the
+		// state, the suburb has to be in the postcode for that state.
 		foreach ($this->postcode_data as $row) {
-			if ($row['LOCALITY'] === $sub) {
+			if ($row['LOCALITY'] === $sub && ($state === null || $row['STATE'] === $state)) {
 				$this->Locality = $sub;
+				$this->State = $row['STATE'];
 				return true;
 			}
 		}
-		throw new \Exception("Suburb $sub is not in postcode ".$this->Postcode);
+		$in = $state === null ? "" : " for $state";
+		throw new \Exception("Suburb $sub is not in postcode ".$this->Postcode.$in);
 	}
 
 	public function getMultiple() {
